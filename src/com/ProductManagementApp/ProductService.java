@@ -2,6 +2,7 @@ package com.ProductManagementApp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ProductService {
 
@@ -26,20 +27,24 @@ public class ProductService {
 		return null;
 	}
 
-	public List<Product> getProductWithText(String string) {
+	public Stream<Product> getProductWithText(String string) {
 		
 		String string2 = string.toLowerCase();
 		// TODO Auto-generated method stub
-		List<Product> prodsList = new ArrayList<>();
+//		List<Product> prodsList = new ArrayList<>();
+//		
+//		for (Product p : products) {
+//			
+//			
+//			
+//			if(p.getName().toLowerCase().contains(string2) || p.getModel().toLowerCase().contains(string2))
+//				prodsList.add(p);
+//		}
 		
-		for (Product p : products) {
-			
-			
-			
-			if(p.getName().toLowerCase().contains(string2) || p.getModel().toLowerCase().contains(string2))
-				prodsList.add(p);
-		}
+		Stream<Product> stream = products.stream();
 		
-		return prodsList;
+		return stream.filter(prod -> prod.getName().toLowerCase().contains(string2)|| prod.getModel().toLowerCase().contains(string2));
+		
+//		return prodsList;
 	}
 }

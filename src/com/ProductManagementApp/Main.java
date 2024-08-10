@@ -1,6 +1,7 @@
 package com.ProductManagementApp;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -32,11 +33,8 @@ public class Main {
 		System.out.println("==============================================");
 		System.out.println("A particular text");
 		
-		List<Product> prodsList = service.getProductWithText("laptop");
-		for(Product p : prodsList) {
-			
-			System.out.println(p);
-		}
+		Stream<Product> prodsList = service.getProductWithText("l");
+		prodsList.forEach(p -> System.out.println(p));
 	}
 
 }
